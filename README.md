@@ -216,8 +216,8 @@ ReqHeaders = [{<<"Content-Type">>, <<"application/json">>}],
 NextPath = <<"/">>,
 NextMethod = post,
 NextReq = {NextMethod, NextPath, ReqHeaders, ReqBody},
-{ok, _, _, ConnRef} = hackney:send_request(ConnRef, NextReq),
-{ok, Body1} = hackney:body(ConnRef).
+{ok, _, _, NewConnRef} = hackney:send_request(ConnRef, NextReq),
+{ok, Body1} = hackney:body(NewConnRef).
 ```
 
 Here we are posting a JSON payload to '/' on the friendpaste service to
@@ -601,4 +601,3 @@ $ kill `cat httpbin.pid`
 <tr><td><a href="http://github.com/benoitc/hackney/blob/master/doc/hackney_trace.md" class="module">hackney_trace</a></td></tr>
 <tr><td><a href="http://github.com/benoitc/hackney/blob/master/doc/hackney_url.md" class="module">hackney_url</a></td></tr>
 <tr><td><a href="http://github.com/benoitc/hackney/blob/master/doc/hackney_util.md" class="module">hackney_util</a></td></tr></table>
-
